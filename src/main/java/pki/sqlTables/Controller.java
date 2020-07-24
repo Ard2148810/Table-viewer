@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class Controller {
 
-    @RequestMapping
+    @RequestMapping("/")
     public String index(@RequestParam(required = false) String name) {
         if(name == null || name.equals("")) {
             name = "World";
