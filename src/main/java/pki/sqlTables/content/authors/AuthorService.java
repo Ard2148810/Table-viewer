@@ -18,8 +18,4 @@ public class AuthorService {
         return authors;
     }
 
-    public void addAuthor(AuthorEntity author) {
-        authorRepository.save(author);
-    }
-
 }
