@@ -16,10 +16,8 @@ public class BookEntity {
 
     private String title;
 
-    @ManyToOne
-    @JoinColumn(name = "author", referencedColumnName = "id")
-    private AuthorEntity author;
-    
+    private Integer author;
+
     private Integer pages;
 
     public int getId() {
@@ -46,11 +44,11 @@ public class BookEntity {
         this.title = title;
     }
 
-    public AuthorEntity getAuthor() {
+    public Integer getAuthor() {
         return author;
     }
 
-    public void setAuthor(AuthorEntity author) {
+    public void setAuthor(Integer author) {
         this.author = author;
     }
 
