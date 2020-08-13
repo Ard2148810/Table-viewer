@@ -1,6 +1,7 @@
 package pki.sqlTables.content.authors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,6 +14,7 @@ public class AuthorController {
     private AuthorService authorService;
 
     @GetMapping("/api/authors")
+    @CrossOrigin
     public List<AuthorEntity> getAllAuthors() {
         return authorService.getAllAuthors();
     }
