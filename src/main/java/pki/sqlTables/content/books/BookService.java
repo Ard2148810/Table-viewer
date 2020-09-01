@@ -18,4 +18,27 @@ public class BookService {
         return books;
     }
 
+    public BookEntity addBook(BookEntity newBook) {
+        return bookRepository.save(newBook);
+    }
+
+    public void deleteBook(Long id) {
+        bookRepository.deleteById(id);
+    }
+
+    public BookEntity updateBook(Long id, BookEntity updatedBook) {
+        return bookRepository.findById(id)                           // Find old book
+                .map(oldBook -> {                                    // Update properties
+                    oldBook.setIsbn(updatedBook.getIsbn());
+                    oldBook.setTitle(updatedBook.getTitle());
+                    oldBook.setAuthor(updatedBook.getAuthor());
+                    oldBook.setPages(updatedBook.getPages());
+                    return bookRepository.save(oldBook);             // Save updated in DB
+                })
+                .orElseGet(() -> {                                   // If doesn't exist then save with expected id
+                    updatedBook.setId(id);
+                    return bookRepository.save(updatedBook);
+                });
+    }
+
 }
