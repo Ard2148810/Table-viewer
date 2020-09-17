@@ -9,11 +9,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        // Only authenticated client can access API
-        http
-                .authorizeRequests().antMatchers("/**").authenticated()
-                .and()
-                .oauth2Login();
+//        http.cors().and()
+//                .authorizeRequests().antMatchers("/**").authenticated()
+//                .and()
+//                .oauth2Login();
 
     }
 

@@ -1,6 +1,7 @@
 package pki.sqlTables.content.books;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.logging.log4j2.Log4J2LoggingSystem;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -25,7 +26,12 @@ public class BookController {
     @MessageMapping("/books/add")
     @SendTo("/topic/books/add")
     public BookEntity addBook(BookEntity newBook) {
-        return bookService.addBook(newBook);
+        try {
+            return bookService.addBook(newBook);
+        } catch (Exception exception) {
+            System.out.println(exception.getMessage());
+        }
+        return null;
     }
 
     @MessageMapping("/books/delete/{id}")
